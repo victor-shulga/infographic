@@ -15,7 +15,7 @@ INK, BODY, MUTED, LINE, CARD = "#161513", "#3D3D3A", "#6C6A64", "#E8E6E1", "#F7F
 # --- rubric chip: pillar "GTM стратегія" ---
 CHIP_LABEL, CHIP_BG, CHIP_FG = "GTM стратегія", CORAL, "#FFFFFF"
 
-AVATAR = pathlib.Path.home() / ".claude/skills/infographic/assets/avatar.png"
+AVATAR = pathlib.Path(__file__).resolve().parents[1] / "avatar.png"  # assets/avatar.png
 photo_b64 = base64.b64encode(AVATAR.read_bytes()).decode()
 
 BOWTIE = ('<svg width="44" height="44" viewBox="0 0 100 100">'

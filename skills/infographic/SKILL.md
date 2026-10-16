@@ -16,6 +16,8 @@ description: >-
 
 # /infographic
 
+> Paths written as `<skill-dir>/…` point to the folder that holds this SKILL.md (wherever the skill was installed).
+
 Generate LinkedIn infographics for the Victor Shulga personal brand (victorshulga.com) using his existing Figma design system. **Brand-pure palette**: white BG + coral + charcoal + forest only. NO pastels.
 
 ## When to trigger
@@ -74,7 +76,7 @@ Two ways to produce the same 1080×1350 brand-pure image. **Pick one deliberatel
 ### HTML/Chrome mechanics
 
 Working reference (runs as-is, produces the "Новий офер тестують не на холодних" ladder):
-`~/.claude/skills/infographic/assets/html-render/ladder-reference.py`
+`<skill-dir>/assets/html-render/ladder-reference.py`
 
 Copy it into the post's output folder, swap the data list + title + rule band, run it. The skeleton:
 
@@ -93,7 +95,7 @@ subprocess.run([
 Non-negotiables for this backend:
 
 - **Both Chrome flags** (`--virtual-time-budget=6000`, `--run-all-compositor-stages-before-draw`). Without them Google Fonts don't land and Ukrainian text drops to a serif fallback. Always open the PNG and confirm the Cyrillic before shipping.
-- **Photo goes in as base64**, never a file path — `file://` images are flaky in headless. Source: `~/.claude/skills/infographic/assets/avatar.png`.
+- **Photo goes in as base64**, never a file path — `file://` images are flaky in headless. Source: `<skill-dir>/assets/avatar.png`.
 - **Bowtie mark is inline SVG** (see `BOWTIE` in the reference), not an image asset.
 - **Brand tokens are declared once at the top** of the script as Python constants, copied from the Brand block above (live reference: victorshulga-design-system.netlify.app). Never hardcode hexes inline in the CSS string.
 - `html,body{{width:1080px;height:1350px;overflow:hidden}}` — fix the canvas, don't let content grow it. If a row list overflows, shrink the row height, don't let Chrome scroll.
@@ -136,7 +138,7 @@ Pitfalls specific to Ladder:
 ## Recipe: TIMELINE ROWS (a process over time, HTML/Chrome)
 
 Built 2026-08-31 for «Таймлайн запуску аутбаунду». Reference script:
-`~/.claude/skills/infographic/assets/html-render/timeline-rows-reference.py` — runs as-is, produces that creative.
+`<skill-dir>/assets/html-render/timeline-rows-reference.py` — runs as-is, produces that creative.
 
 **Pick this over Ladder when** the rows are PERIODS, not ranks: the coral ramp reads as time passing and
 results arriving, not as trust. Pick it over Vertical Steps when every period needs the SAME three columns
@@ -237,7 +239,7 @@ fires on the H1 because the brand rule requires a literal artifact name there. N
 The brand mark in the footer is now a **bowtie on a coral square drawn as vectors** (`makeBowtieSquare`) — NO wordmark image needed. Footer = `makeAuthor` (photo + name + FRACTIONAL CRO pill) left, `makeWordmark` (bowtie mark + victorshulga.com) right. This replaced the old dead-brand globe wordmark + founder line.
 
 **Source PNG**:
-- `~/.claude/skills/infographic/assets/avatar.png`
+- `<skill-dir>/assets/avatar.png`
 
 ## Workflow
 
@@ -264,7 +266,7 @@ upload_assets fileKey=<new_file_key> count=1
 
 Then POST the avatar PNG via Bash:
 ```bash
-curl -s -X POST -F "file=@~/.claude/skills/infographic/assets/avatar.png" "<submitUrl_1>"
+curl -s -X POST -F "file=@<skill-dir>/assets/avatar.png" "<submitUrl_1>"
 ```
 
 Auto-creates 1 placeholder frame — delete it in Step 4.
