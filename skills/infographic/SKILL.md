@@ -198,8 +198,9 @@ wrap one-per-line and a plain `·`-separated text line reads better.
 
 ### Run the copy through the detector before shipping
 
-Creative copy is post copy. Dump every string into a `.md` and run
-`anticopywriting-ai/scripts/detect.py --lang uk --mode post`. Real hits found this way: em dashes in
+Creative copy is post copy. Dump every string into a `.md` and run the AI-pattern detector of the
+anticopywriting-ai skill over it (`detect.py --lang uk --mode post`; that skill ships in
+`npx skills add victor-shulga/gtm-skills`). Without it, read the dump against the bans by hand. Real hits found this way: em dashes in
 the rule band (`сигнал — коли писати` → `сигнал: коли писати`), and the word «тиша» for absent replies
 (ban #12). Two hits are ARTIFACTS of flattening a table into prose — `rule_of_three` fires when list
 rows land as consecutive short fragments (prefix them with `→` in the dump), and `throat_clear` always
