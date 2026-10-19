@@ -40,3 +40,7 @@ brand, swap the files in `skills/infographic/assets/` and the Brand block in `SK
 ## License
 
 MIT
+
+---
+
+Built by [Victor Shulga](https://victorshulga.com), Fractional CRO for B2B service companies. Full skill stack: [victorshulga.com/stack](https://victorshulga.com/stack/).
